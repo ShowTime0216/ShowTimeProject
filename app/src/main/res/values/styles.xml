@@ -1,0 +1,51 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"></style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="textSize10">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="textSize12">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="textSize13">
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="textSize14">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="textSize15">
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="textSize16">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="textSize18">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="textSize20">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="textSize22">
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="textSize24">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+</resources>

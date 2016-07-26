@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 红色(从浅到深) -->
+    <color name="red">#ff0000</color>
+    <color name="red_ee3">#EE3B3B</color>
+    <color name="red_ee0">#ee0000</color>
+    <color name="red_cd">#CD0000</color>
+
+    <!-- 黄色(从浅到深) -->
+    <color name="yellow">#FFFF00</color>
+    <color name="yellow_f9">#f9f28b</color>
+    <color name="yellow_ee">#EEEE00</color>
+
+    <!-- 绿色(从浅到深) -->
+    <color name="green">#00FF00</color>
+    <color name="green_00e">#00EE00</color>
+    <color name="green_00c">#00CD00</color>
+
+    <!-- 蓝白浅色 -->
+    <color name="blue_f0">#F0F8FF</color>
+    <color name="blue_e0">#E0FFFF</color>
+    <color name="blue_d1">#D1EEEE</color>
+    <color name="blue_bf">#BFEFFF</color>
+    <color name="blue_ae">#AEEEEE</color>
+    <color name="blue_97">#97FFFF</color>
+    <color name="blue_8d">#8DEEEE</color>
+    <color name="blue_00">#00F5FF</color>
+    <color name="blue_a4">#A4D3EE</color>
+    <color name="blue_7d">#7dc5eb</color>
+    <color name="blue_17">#17abe3</color>
+    <color name="blue_11">#1195db</color>
+    <color name="blue_004">#004198</color>
+    <color name="blue_000">#000080</color>
+
+    <!-- 背景色(白灰黑色) 从浅到深 -->
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="white_f1">#f1f1f1</color>
+    <color name="white_f3">#f3f3f3</color>
+    <color name="white_f6">#f6f6f6</color>
+    <color name="white_f9">#f9f9f9</color>
+    <color name="white_e6">#e6e6e6</color>
+    <color name="white_db">#dbdbdb</color>
+    <color name="white_cd">#cdcdcd</color>
+    <color name="white_bf">#bfbfbf</color>
+    <color name="black_8a">#8a8a8a</color>
+    <color name="black_70">#707070</color>
+    <color name="black_51">#515151</color>
+    <color name="black_2c">#2c2c2c</color>
+    <color name="black">#000000</color>
+
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+</resources>
