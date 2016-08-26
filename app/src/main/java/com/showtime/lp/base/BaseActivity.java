@@ -1,7 +1,9 @@
 package com.showtime.lp.base;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -12,7 +14,7 @@ import com.showtime.lp.R;
  * 16/7/21 16:26
  * 注释:
  */
-public class BaseActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
+public class BaseActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener, View.OnTouchListener {
 
     @Override
     public void startActivity(Intent intent) {
@@ -21,8 +23,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    public void startActivityForResult(Intent intent, int requestCode, Bundle options) {
+        super.startActivityForResult(intent, requestCode, options);
         overridePendingTransition(R.anim.anim_activity_right_in, R.anim.anim_activity_left_out);
     }
 
@@ -40,5 +42,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        return false;
     }
 }

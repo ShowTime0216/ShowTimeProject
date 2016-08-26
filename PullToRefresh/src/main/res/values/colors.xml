@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 背景色(白灰黑色) 从浅到深 -->
+    <color name="db">#dbdbdb</color>
+    <color name="cd">#cdcdcd</color>
+    <color name="bf">#bfbfbf</color>
+    <color name="a8a">#8a8a8a</color>
+</resources>

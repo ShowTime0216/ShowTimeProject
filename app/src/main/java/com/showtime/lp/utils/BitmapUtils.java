@@ -83,6 +83,22 @@ public class BitmapUtils {
     }
 
     /**
+     * @param
+     * @return Bitmap
+     * @Description: 缩放/裁剪图片
+     */
+    public static Bitmap getZoomImg(Bitmap bm, int newWidth, int newHeight) {
+        int width = bm.getWidth(); // 获得图片的宽高
+        int height = bm.getHeight();
+        float scaleWidth = ((float) newWidth) / width; // 计算缩放比例
+        float scaleHeight = ((float) newHeight) / height;
+        Matrix matrix = new Matrix(); // 取得想要缩放的matrix参数
+        matrix.postScale(scaleWidth, scaleHeight);
+        Bitmap newbm = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, true); // 得到新的图片
+        return newbm;
+    }
+
+    /**
      * 把Bitmap转成图片保存到本地
      *
      * @param bitmap

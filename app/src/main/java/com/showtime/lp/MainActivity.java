@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.showtime.lp.base.BaseActivity;
 import com.showtime.lp.fragment.HomePageFragment;
@@ -45,6 +47,7 @@ public class MainActivity extends BaseActivity {
     private TextView messageText;
     private TextView taskText;
     private TextView mineText;
+    private long exitTime;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -194,6 +197,19 @@ public class MainActivity extends BaseActivity {
         messageText.setTextColor(getResources().getColor(R.color.black_2c));
         taskText.setTextColor(getResources().getColor(R.color.black_2c));
         mineText.setTextColor(getResources().getColor(R.color.black_2c));
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_BACK) {
+            if ((System.currentTimeMillis() - exitTime) > 2000) {
+                Toast.makeText(MainActivity.this, "再按一次退出", Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } else {
+                finish();
+            }
+        }
+        return false;
     }
 
 

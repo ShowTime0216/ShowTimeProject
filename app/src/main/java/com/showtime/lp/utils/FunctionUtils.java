@@ -6,13 +6,11 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.StatFs;
 import android.util.DisplayMetrics;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -153,6 +151,21 @@ public class FunctionUtils {
     }
 
     /**
+     * 获取listview滑动了多少距离
+     *
+     * @return
+     */
+    public static int getScrollY(ListView listView) {
+        View c = listView.getChildAt(0);
+        if (c == null) {
+            return 0;
+        }
+        int firstVisiblePosition = listView.getFirstVisiblePosition();
+        int top = c.getTop();
+        return -top + firstVisiblePosition * c.getHeight();
+    }
+
+    /**
      * 获得屏幕高度
      *
      * @param context
@@ -236,69 +249,6 @@ public class FunctionUtils {
         bp = Bitmap.createBitmap(bmp, 0, statusBarHeight, width, height - statusBarHeight);
         view.destroyDrawingCache();
         return bp;
-    }
-
-    /**
-     * @param
-     * @return int
-     * @Description: dp转px
-     */
-    public static int getdp2px(Context context, float dpVal) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpVal, context.getResources().getDisplayMetrics());
-    }
-
-    /**
-     * @param
-     * @return int
-     * @Description: dp转px
-     */
-    public static int dip2px(Context context, float dpValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
-    }
-
-    /**
-     * @param
-     * @return int
-     * @Description: sp转px
-     */
-    public static int getsp2px(Context context, float spVal) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, spVal, context.getResources().getDisplayMetrics());
-    }
-
-    /**
-     * @param
-     * @return float
-     * @Description: px转dp
-     */
-    public static float getpx2dp(Context context, float pxVal) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (pxVal / scale);
-    }
-
-    /**
-     * @param
-     * @return float
-     * @Description: px转sp
-     */
-    public static float getpx2sp(Context context, float pxVal) {
-        return (pxVal / context.getResources().getDisplayMetrics().scaledDensity);
-    }
-
-    /**
-     * @param
-     * @return Bitmap
-     * @Description: 缩放/裁剪图片
-     */
-    public static Bitmap getZoomImg(Bitmap bm, int newWidth, int newHeight) {
-        int width = bm.getWidth(); // 获得图片的宽高
-        int height = bm.getHeight();
-        float scaleWidth = ((float) newWidth) / width; // 计算缩放比例
-        float scaleHeight = ((float) newHeight) / height;
-        Matrix matrix = new Matrix(); // 取得想要缩放的matrix参数
-        matrix.postScale(scaleWidth, scaleHeight);
-        Bitmap newbm = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, true); // 得到新的图片
-        return newbm;
     }
 
     /**

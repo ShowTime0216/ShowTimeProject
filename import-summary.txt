@@ -17,11 +17,15 @@ Moved Files:
 Android Gradle projects use a different directory structure than ADT
 Eclipse projects. Here's how the projects were restructured:
 
-* AndroidManifest.xml => PullToRefresh1/src/main/AndroidManifest.xml
-* assets/ => PullToRefresh1/src/main/assets
-* res/ => PullToRefresh1/src/main/res/
-* src/ => PullToRefresh1/src/main/java/
-* src/.DS_Store => PullToRefresh1/src/main/resources/.DS_Store
+* AndroidManifest.xml => PullToRefresh/src/main/AndroidManifest.xml
+* assets/ => PullToRefresh/src/main/assets
+* res/ => PullToRefresh/src/main/res/
+* src/ => PullToRefresh/src/main/java/
+* src/.DS_Store => PullToRefresh/src/main/resources/.DS_Store
+* src/com/.DS_Store => PullToRefresh/src/main/resources/com/.DS_Store
+* src/com/handmark/.DS_Store => PullToRefresh/src/main/resources/com/handmark/.DS_Store
+* src/com/handmark/pulltorefresh/.DS_Store => PullToRefresh/src/main/resources/com/handmark/pulltorefresh/.DS_Store
+* src/com/handmark/pulltorefresh/library/.DS_Store => PullToRefresh/src/main/resources/com/handmark/pulltorefresh/library/.DS_Store
 
 Next Steps:
 -----------
