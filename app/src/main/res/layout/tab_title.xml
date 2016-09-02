@@ -21,7 +21,6 @@
                 android:layout_marginLeft="15dp"
                 android:ellipsize="end"
                 android:singleLine="true"
-                android:text="返回"
                 android:textColor="@color/white"
                 android:visibility="gone" />
 

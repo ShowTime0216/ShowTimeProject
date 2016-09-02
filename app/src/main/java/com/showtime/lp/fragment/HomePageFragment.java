@@ -20,6 +20,8 @@ import com.youth.banner.BannerConfig;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.ButterKnife;
+
 /**
  * 作者:liupeng
  * 16/7/21 16:57
@@ -48,7 +50,7 @@ public class HomePageFragment extends BaseFragment {
         initView();
 
 
-
+        ButterKnife.bind(this, view);
         return view;
     }
 
@@ -119,24 +121,24 @@ public class HomePageFragment extends BaseFragment {
         setPullList(mPullList);
     }
 
-    @Override
-    public void onClick(View v) {
-        super.onClick(v);
-        switch (v.getId()) {
-//            case R.id.textView:
-//                Intent intent = new Intent(getActivity(), ProjectActivity.class);
-//                startActivity(intent);
-//                break;
-        }
-    }
+//    @Override
+//    public void onClick(View v) {
+//        super.onClick(v);
+//        switch (v.getId()) {
+////            case R.id.textView:
+////                Intent intent = new Intent(getActivity(), ProjectActivity.class);
+////                startActivity(intent);
+////                break;
+//        }
+//    }
 
     /**
-     * @setEventListener setEventListener
-     * @Description: 上拉下拉监听事件
      * @param
      * @return void
+     * @setEventListener setEventListener
+     * @Description: 上拉下拉监听事件
      */
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({"unchecked", "rawtypes"})
     private void pullListener() {
         mPullList.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2() {
 
@@ -157,10 +159,10 @@ public class HomePageFragment extends BaseFragment {
     }
 
     /**
-     * @initData initData
-     * @Description: BOTH 上拉下拉的View
      * @param
      * @return void
+     * @initData initData
+     * @Description: BOTH 上拉下拉的View
      */
     private void setPullList(PullToRefreshScrollView mPullList) {
         mPullList.setMode(PullToRefreshBase.Mode.BOTH); // 设置PullToRefreshListView的模式

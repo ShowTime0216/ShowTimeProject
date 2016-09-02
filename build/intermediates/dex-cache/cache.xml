@@ -1,2 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/Users/liupeng/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/picasso-2.5.2_f27b1d29b47815b1200ba7223266070a6f3cb983/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/ShowTimeProject/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="3bd97cfefd783e9de1dd1c30574a6adb44b4409b">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.0.0_9ab8a9ef4be79f87f8b344f135f5867988c9280a/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/ShowTimeProject/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e70f608219ed6b974644c333249ab2bb7b71de98">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.0.0_c9da8ad7ec0512373de5b3aad0886c19e1024521/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.6.2/f1bc476cc167b18e66c297df599b2377131a8947/gson-2.6.2.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f1bc476cc167b18e66c297df599b2377131a8947">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/gson-2.6.2_999bcfbc3a9d630ef240d175c53eaebc086e38be/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/ShowTimeProject/app/build/intermediates/exploded-aar/com.jakewharton/butterknife/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="a07818a1ecabdb149998823429cce555af4b9cba">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.jakewharton-butterknife-8.4.0_44e909c31c18e5ad874415f22997b9188d09c945/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.6.0/98476622f10715998eacf9240d6b479f12c66143/okio-1.6.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="98476622f10715998eacf9240d6b479f12c66143">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/okio-1.6.0_3e563ff6c0a7a27613545a52053b788c00482a67/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/ShowTimeProject/app/build/intermediates/exploded-aar/com.github.barteksc/android-pdf-viewer/2.0.3/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="930d951d620e33cc761148fc880459eec564a3b5">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.github.barteksc-android-pdf-viewer-2.0.3_cc20da9cecc4726010f5e6fd8c567c34d57ca506/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/ShowTimeProject/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-23.4.0_0dfb94f1a17a582ed5b8b489fd1084341f313222/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/ShowTimeProject/app/build/intermediates/exploded-aar/com.github.johnkil.android-appmsg/appmsg/1.2.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="398ec51345409df9e36a1de1a81f2b3ad5234bfb">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.github.johnkil.android-appmsg-appmsg-1.2.0_9852ee788ea0b7577a235ac5b18510f3a413757d/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/ShowTimeProject/app/build/intermediates/exploded-aar/com.youth.banner/banner/1.2.7/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8da9b7da78339000a702454870b0cbbaf8c2db21">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.youth.banner-banner-1.2.7_ac4098d5aacbb6909bce7cc8ba38ca98ea2dfcb1/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.2.0/f7873a2ebde246a45c2a8d6f3247108b4c88a879/okhttp-3.2.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f7873a2ebde246a45c2a8d6f3247108b4c88a879">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/okhttp-3.2.0_ceb5ec529a0146f5c984013657792b6f74f101a6/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/ShowTimeProject/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f5c0e98e6d8ba3a4cf4cc0a7adc751a5a1a620b7">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_c76754014ef8634a7da79ec5ba517593caeb8c75/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/ShowTimeProject/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/2.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="031e8b3ab2df4ab43b1017f84417d7e10dfbb8d2">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/de.hdodenhof-circleimageview-2.0.0_6c0a97f512d8951672460eff39d2cfb5420b42e2/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.7.0/9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4/glide-3.7.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/glide-3.7.0_c168be4013814fb899e6580c6cc619947ca674dc/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-annotations/8.4.0/ea392375cf9ff59234a82e7928a204215ccc98cd/butterknife-annotations-8.4.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ea392375cf9ff59234a82e7928a204215ccc98cd">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/butterknife-annotations-8.4.0_324bfb7dadc9c4346cd482171d2a93ee1d97b62e/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/ShowTimeProject/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-23.4.0_c28b0f5512ed4ea5645f9e4674bf228faf410575/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/ShowTimeProject/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.0.0_e3ee350d9bdd48d72f20631b76d193c1ebe93c8f/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/ShowTimeProject/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="0874286cc2fd88d54fdf130e9d5372730da6de97">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.0.0_bf60b78425ff9a1b320b25ec8da9d91d3723070e/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/ShowTimeProject/app/build/intermediates/exploded-aar/com.github.barteksc/pdfium-android/1.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="c17272eb894dcb4217871365757ba21f605d35e8">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.github.barteksc-pdfium-android-1.4.0_108b800b5112156d9a00572b667cc5cc2c999b47/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/ShowTimeProject/app/build/intermediates/exploded-aar/com.joanzapata.pdfview/android-pdfview/1.0.4/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="df559ab8a9d5d44cf0a49dbb2be402637b90ba90">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.joanzapata.pdfview-android-pdfview-1.0.4_7459368ef0ae600257dc9174ce666dc7c4964c13/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/library-2.4.0_d60c84da6b54d44c9f3564deed01e0d553f93925/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/ShowTimeProject/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d9ecde39b460470e655de6e47c05573d2d5a8bfb">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-cardview-v7-23.4.0_53561d79c0619816e10bfcc1450bdd7479837877/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/ShowTimeProject/app/build/intermediates/exploded-aar/com.github.lovetuzitong/MultiImageSelector/1.2/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="0b0af18c4e06857f37c0f72d02df06de0a8792ea">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.github.lovetuzitong-MultiImageSelector-1.2_8ea58d207156b19940c4030fe4dc489281251075/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/ShowTimeProject/app/build/intermediates/exploded-aar/com.lzy.net/okhttputils/1.6.5/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="064e66676a191a964e6246f4ac98641ca1dce2b7">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.lzy.net-okhttputils-1.6.5_e2065a75e3f50d1be83011253a22a95f256bfcfe/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/24.1.0/8a23146e1a8c7cb4758e3d3f62449213f1e51f67/support-annotations-24.1.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8a23146e1a8c7cb4758e3d3f62449213f1e51f67">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.1.0_827d3584a89ba7d8fa9bb4c831d7c5e63aaa5e62/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/ShowTimeProject/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/libs/internal_impl-24.0.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.0.0_4cd6e95a90e5e27d08bc0658bb838f51bf594da2/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/ShowTimeProject/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="dcffca7825681ff052d7d71e6ab534ab3e714a2c">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_6f11e668d7a4c63e062cc4c320376ab6078943f7/classes.dex" />
+    </item>
+    <item
+        jar="/Users/liupeng/ShowTimeProject/app/build/intermediates/exploded-aar/org.kymjs.kjframe/kjframe/2.6/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="60538003caaf7201ec4945bae8071c9e38b3cd91">
+        <dex dex="/Users/liupeng/ShowTimeProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/org.kymjs.kjframe-kjframe-2.6_7bd4e3227e15d7e6f876ca3aed42b1e5c9e95d09/classes.dex" />
+    </item>
+
+</items>

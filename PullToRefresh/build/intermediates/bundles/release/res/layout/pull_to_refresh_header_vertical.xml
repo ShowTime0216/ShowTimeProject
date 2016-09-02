@@ -19,8 +19,7 @@
                 android:id="@+id/pull_to_refresh_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp" />
+                android:layout_gravity="center" />
 
             <ProgressBar
                 android:id="@+id/pull_to_refresh_progress"

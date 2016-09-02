@@ -6,10 +6,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.showtime.lp.R;
 import com.showtime.lp.base.BaseFragment;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * 作者:liupeng
@@ -17,29 +21,21 @@ import com.showtime.lp.base.BaseFragment;
  * 注释:
  */
 public class MenuFragment extends BaseFragment {
+    @BindView(R.id.title_text)
+    TextView titleText;
+    @BindView(R.id.ratingBar)
+    RatingBar ratingBar;
     private View view;
-    private TextView titleText;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.frag_menu, container, false);
         Log.e("menu--onCreateView", "menu--onCreateView");
+        ButterKnife.bind(this, view);
         initView();
         return view;
     }
-
-//    @Override
-//    protected View inflaterView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
-//        Log.e("menu--inflaterView", "menu--inflaterView");
-//        return null;
-//    }
-//
-//    @Override
-//    protected void initWidget(View parentView) {
-//        super.initWidget(parentView);
-//        Log.e("menu--initWidget", "menu--initWidget");
-//    }
 
 
     @Override
@@ -60,8 +56,12 @@ public class MenuFragment extends BaseFragment {
     }
 
     private void initView() {
-        titleText = (TextView) view.findViewById(R.id.title_text);
         titleText.setText("菜单");
-
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                Log.e("onRatingChanged", "onRatingChanged");
+            }
+        });
     }
 }
