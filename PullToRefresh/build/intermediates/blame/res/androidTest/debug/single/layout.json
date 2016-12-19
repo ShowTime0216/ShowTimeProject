@@ -6,5 +6,13 @@
     {
         "merged": "/Users/liupeng/ShowTimeProject/PullToRefresh/build/intermediates/res/merged/androidTest/debug/layout/pull_to_refresh_header_horizontal.xml",
         "source": "/Users/liupeng/ShowTimeProject/PullToRefresh/build/intermediates/bundles/debug/res/layout/pull_to_refresh_header_horizontal.xml"
+    },
+    {
+        "merged": "/Users/lp1/AndroidStudioProjects/ShowTimeProject/PullToRefresh/build/intermediates/res/merged/androidTest/debug/layout/pull_to_refresh_header_vertical.xml",
+        "source": "/Users/lp1/AndroidStudioProjects/ShowTimeProject/PullToRefresh/build/intermediates/bundles/debug/res/layout/pull_to_refresh_header_vertical.xml"
+    },
+    {
+        "merged": "/Users/lp1/AndroidStudioProjects/ShowTimeProject/PullToRefresh/build/intermediates/res/merged/androidTest/debug/layout/pull_to_refresh_header_horizontal.xml",
+        "source": "/Users/lp1/AndroidStudioProjects/ShowTimeProject/PullToRefresh/build/intermediates/bundles/debug/res/layout/pull_to_refresh_header_horizontal.xml"
     }
 ]

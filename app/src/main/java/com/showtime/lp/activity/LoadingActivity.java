@@ -13,7 +13,7 @@ import com.showtime.lp.base.BaseActivity;
 /**
  * 作者:liupeng
  * 16/7/22 10:58
- * 注释:
+ * 注释: 引导页----
  */
 public class LoadingActivity extends BaseActivity {
 
