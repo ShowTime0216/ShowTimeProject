@@ -1,5 +1,6 @@
 package com.showtime.lp.fragment;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.showtime.lp.R;
+import com.showtime.lp.activity.ProjectActivity;
 import com.showtime.lp.base.BaseFragment;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -94,8 +96,8 @@ public class HomePageFragment extends BaseFragment {
         titleText = (TextView) view.findViewById(R.id.title_text);
         titleText.setText("首页");
 
-//        textView = (TextView) view.findViewById(R.id.textView);
-//        textView.setOnClickListener(this);
+        textView = (TextView) view.findViewById(R.id.textView);
+        textView.setOnClickListener(this);
 
         mPullList = (PullToRefreshScrollView) view.findViewById(R.id.pullToRefreshScrollView);
 
@@ -121,16 +123,16 @@ public class HomePageFragment extends BaseFragment {
         setPullList(mPullList);
     }
 
-//    @Override
-//    public void onClick(View v) {
-//        super.onClick(v);
-//        switch (v.getId()) {
-////            case R.id.textView:
-////                Intent intent = new Intent(getActivity(), ProjectActivity.class);
-////                startActivity(intent);
-////                break;
-//        }
-//    }
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
+        switch (v.getId()) {
+            case R.id.textView:
+                Intent intent = new Intent(getActivity(), ProjectActivity.class);
+                startActivity(intent);
+                break;
+        }
+    }
 
     /**
      * @param
