@@ -11,6 +11,9 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a"
+        }
     }
     buildTypes {
         release {
@@ -18,10 +21,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile project(':PullToRefresh')
     compile 'com.android.support:appcompat-v7:24.0.0'
@@ -32,13 +37,24 @@ dependencies {
     compile 'org.kymjs.kjframe:kjframe:2.6'
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'de.hdodenhof:circleimageview:2.0.0'
-    compile 'com.youth.banner:banner:1.2.7' // 轮播广告
-    compile 'com.github.lovetuzitong:MultiImageSelector:1.2' // 自定义相册(仿微信)
-    compile 'com.github.johnkil.android-appmsg:appmsg:1.2.0' // 自定义Toast
+    compile 'com.youth.banner:banner:1.2.7'
+    // 轮播广告
+    compile 'com.github.lovetuzitong:MultiImageSelector:1.2'
+    // 自定义相册(仿微信)
+    compile 'com.github.johnkil.android-appmsg:appmsg:1.2.0'
+    // 自定义Toast
     compile 'com.jakewharton:butterknife:8.4.0'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.lzy.net:okhttputils:1.6.5'
     compile 'org.greenrobot:eventbus:3.0.0'
-    compile 'com.joanzapata.pdfview:android-pdfview:1.0.4@aar' // WebView显示PDF
-    compile 'com.github.barteksc:android-pdf-viewer:2.0.3' // WebView显示PDF
+    compile 'com.joanzapata.pdfview:android-pdfview:1.0.4@aar'
+    // WebView显示PDF
+    compile 'com.github.barteksc:android-pdf-viewer:2.0.3'
+    // WebView显示PDF
+    compile 'com.mabeijianxi:small-video-record:1.2.2'
+    compile 'com.github.gcacace:signature-pad:1.2.1'
+    compile('com.github.afollestad.material-dialogs:core:0.8.5.8@aar') {
+        transitive = true
+    }
+    compile files('libs/pldroid-player-2.0.0.jar')
 }

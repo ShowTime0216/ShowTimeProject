@@ -1,0 +1,15 @@
+
+//******//
+
+ 1、onActivityResult不执行：当Activity启动模式设置为SingleTask时，系统在startActivityForResult()后会直接
+    调用onActivityResult，finish返回后不执行onActivityResult。
+
+ 2、部分机型手机调用系统相机会崩溃：在调用系统相机时会干掉当前Activity，所以导致当前页面的数据对象为空。
+
+ 3、使用图片加载框架Glide崩溃问题：使用Glide加载图片偶尔会导致非法参数异常崩溃（多发生在finish返回页面后），
+    传递Context参数注意作用域的使用，具体解决办法查看相关文档。
+
+ 4、
+
+
+

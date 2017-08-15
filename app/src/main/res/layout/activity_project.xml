@@ -24,7 +24,7 @@
                 android:layout_marginTop="30dp"
                 android:background="@color/blue_00"
                 android:gravity="center"
-                android:text="Click" />
+                android:text="Click0" />
 
             <TextView
                 android:id="@+id/textView1"
@@ -34,7 +34,7 @@
                 android:layout_marginTop="30dp"
                 android:background="@color/blue_00"
                 android:gravity="center"
-                android:text="Click" />
+                android:text="Click1" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -44,7 +44,7 @@
                 android:layout_marginTop="30dp"
                 android:background="@color/blue_00"
                 android:gravity="center"
-                android:text="Click" />
+                android:text="Click2" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -54,7 +54,7 @@
                 android:layout_marginTop="30dp"
                 android:background="@color/blue_00"
                 android:gravity="center"
-                android:text="Click" />
+                android:text="Click3" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -64,7 +64,7 @@
                 android:layout_marginTop="30dp"
                 android:background="@color/blue_00"
                 android:gravity="center"
-                android:text="Click" />
+                android:text="Click4" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -74,7 +74,7 @@
                 android:layout_marginTop="30dp"
                 android:background="@color/blue_00"
                 android:gravity="center"
-                android:text="Click" />
+                android:text="Click5" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -84,7 +84,7 @@
                 android:layout_marginTop="30dp"
                 android:background="@color/blue_00"
                 android:gravity="center"
-                android:text="Click" />
+                android:text="Click6" />
 
 
             <TextView
@@ -95,7 +95,7 @@
                 android:layout_marginTop="30dp"
                 android:background="@color/blue_00"
                 android:gravity="center"
-                android:text="Click" />
+                android:text="Click7" />
 
 
             <TextView
@@ -106,7 +106,7 @@
                 android:layout_marginTop="30dp"
                 android:background="@color/blue_00"
                 android:gravity="center"
-                android:text="Click" />
+                android:text="Click8" />
 
 
             <TextView
@@ -117,7 +117,7 @@
                 android:layout_marginTop="30dp"
                 android:background="@color/blue_00"
                 android:gravity="center"
-                android:text="Click" />
+                android:text="Click9" />
         </LinearLayout>
     </org.kymjs.kjframe.widget.KJScrollView>
 
