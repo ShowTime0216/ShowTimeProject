@@ -129,7 +129,8 @@ public class HomePageFragment extends BaseFragment {
         switch (v.getId()) {
             case R.id.textView:
                 Intent intent = new Intent(getActivity(), ProjectActivity.class);
-                startActivity(intent);
+//                startActivity(intent);
+                getActivity().startActivityForResult(intent, 15);
                 break;
         }
     }

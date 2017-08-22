@@ -2,6 +2,7 @@ package com.showtime.lp.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.net.Uri;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.github.gcacace.signaturepad.views.SignaturePad;
+import com.showtime.lp.MainActivity;
 import com.showtime.lp.R;
 import com.showtime.lp.base.BaseActivity;
 import com.showtime.lp.utils.BitmapUtils;
@@ -28,6 +30,7 @@ import java.io.OutputStreamWriter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import mabeijianxi.camera.MediaRecorderActivity;
 
 /**
  * Created by Administrator on 2017/7/21 0021.
@@ -55,24 +58,35 @@ public class ExampleActivity extends BaseActivity {
 
     private void initView() {
 
-        signaturePad.setOnSignedListener(new SignaturePad.OnSignedListener() {
-            @Override
-            public void onStartSigning() {
-//                Toast.makeText(ExampleActivity.this, "OnStartSigning", Toast.LENGTH_SHORT).show();
-            }
+        Log.e("Exam-------------", "---------------------");
+        if (getIntent().getStringExtra(MediaRecorderActivity.VIDEO_URI) != null) {
+            String videoUri = getIntent().getStringExtra(MediaRecorderActivity.VIDEO_URI);
+            String videoScreenshot = getIntent().getStringExtra(MediaRecorderActivity.VIDEO_SCREENSHOT);
+            Bitmap bitmap = BitmapFactory.decodeFile(videoScreenshot);
+            Intent intent = new Intent(ExampleActivity.this, MainActivity.class);
+            intent.putExtra("record_result", videoUri);
+            setResult(99, intent);
+            finish();
+        }
 
-            @Override
-            public void onSigned() {
-                saveButton.setEnabled(true);
-                clearButton.setEnabled(true);
-            }
-
-            @Override
-            public void onClear() {
-                saveButton.setEnabled(false);
-                clearButton.setEnabled(false);
-            }
-        });
+//        signaturePad.setOnSignedListener(new SignaturePad.OnSignedListener() {
+//            @Override
+//            public void onStartSigning() {
+////                Toast.makeText(ExampleActivity.this, "OnStartSigning", Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onSigned() {
+//                saveButton.setEnabled(true);
+//                clearButton.setEnabled(true);
+//            }
+//
+//            @Override
+//            public void onClear() {
+//                saveButton.setEnabled(false);
+//                clearButton.setEnabled(false);
+//            }
+//        });
     }
 
     @OnClick({R.id.clear_button, R.id.save_button})

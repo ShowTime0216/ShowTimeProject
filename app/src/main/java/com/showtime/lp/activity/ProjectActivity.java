@@ -105,6 +105,12 @@ public class ProjectActivity extends BaseKjActivity {
 //        iv_video_screenshot.setImageBitmap(bitmap);
 //        et_send_content.setHint("您视频地址为:"+videoUri);
             Toast.makeText(ProjectActivity.this, videoUri, Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent();
+            intent.putExtra("record_result", videoUri);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            setResult(99, intent);
+            finish();
         }
     }
 
@@ -229,7 +235,8 @@ public class ProjectActivity extends BaseKjActivity {
                         .maxFrameRate(20)
                         .captureThumbnailsTime(1)
                         .build();
-                MediaRecorderActivity.goSmallVideoRecorder(this, ProjectActivity.class.getName(), config);
+                MediaRecorderActivity.goSmallVideoRecorder(this, ExampleActivity.class.getName(), config);
+
 
 //                // 选择本地视频压缩
 //                LocalMediaConfig.Buidler buidler = new LocalMediaConfig.Buidler();
@@ -243,8 +250,10 @@ public class ProjectActivity extends BaseKjActivity {
 //                OnlyCompressOverBean onlyCompressOverBean = new LocalMediaCompress(config).startCompress();
                 break;
             case R.id.textView6:
-                intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, 22);
+//                intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                startActivityForResult(intent, 22);
+                intent = new Intent(context, CameraPhotoActivity.class);
+                startActivity(intent);
                 break;
             case R.id.textView7:
 //                Uri mImageUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
@@ -272,9 +281,15 @@ public class ProjectActivity extends BaseKjActivity {
 //                Log.e("path", path + "---" + requestCode + "----" + resultCode);
 //            }
 //        }
-
-
         Log.e("data-----", data + "   " + requestCode + "     " + resultCode + "   " + RESULT_OK);
+
+
+        if(resultCode == 99){
+            setResult(88, data);
+            finish();
+        }
+
+
         if (data != null) {
             Uri selectedImage = data.getData();
             if (requestCode == 21 && resultCode == RESULT_OK) {
