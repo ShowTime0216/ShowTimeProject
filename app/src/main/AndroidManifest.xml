@@ -57,6 +57,9 @@
         <activity
             android:name=".activity.CameraPhotoActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.TabLayoutExampleActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

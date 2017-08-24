@@ -48,7 +48,7 @@ public class HomePageFragment extends BaseFragment {
 //            parent.removeView(view);
 //        }
         view = inflater.inflate(R.layout.frag_home, container, false);
-        Log.e("home--onCreateView", "home--onCreateView");
+        Log.e("home--onCreateView-----", "home--onCreateView");
         initView();
 
 
@@ -73,7 +73,7 @@ public class HomePageFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.e("home--onResume", "home--onResume");
+        Log.e("home--onResume-----", "home--onResume");
     }
 
     /**
@@ -86,9 +86,9 @@ public class HomePageFragment extends BaseFragment {
         super.onHiddenChanged(hidden);
 
         if (hidden) {
-            Log.e("home--onHidden--onPause", "home--onHiddenChanged");
+            Log.e("home-hidden--onPause-----", "home--onHiddenChanged");
         } else {
-            Log.e("home--onHden--onResume", "home--onHiddenChanged");
+            Log.e("home-hden--onResume-----", "home--onHiddenChanged");
         }
     }
 

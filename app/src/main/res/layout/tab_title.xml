@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="45dp"
     android:background="@color/blue_00">
 
     <LinearLayout
@@ -9,6 +9,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/left_layout"
             android:layout_width="0px"
             android:layout_height="match_parent"
             android:layout_weight="2"
@@ -19,7 +20,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:ellipsize="end"
                 android:singleLine="true"
                 android:textColor="@color/white"
                 android:visibility="gone" />
@@ -35,10 +35,9 @@
 
             <TextView
                 android:id="@+id/title_text"
-                style="@style/textSize20"
+                android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
                 android:singleLine="true"
                 android:textColor="@color/white" />
 
@@ -47,7 +46,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:ellipsize="end"
                 android:singleLine="true"
                 android:textColor="@color/white"
                 android:visibility="gone" />
@@ -65,7 +63,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
-                android:ellipsize="end"
                 android:singleLine="true"
                 android:text="返回"
                 android:textColor="@color/white"

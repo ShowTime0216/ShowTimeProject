@@ -5,4 +5,16 @@
     android:orientation="vertical">
 
     <include layout="@layout/tab_title" />
+
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="Click  Message"
+        android:textColor="@color/blue_00"
+        android:textSize="18sp" />
+
 </LinearLayout>

@@ -31,7 +31,7 @@ public class MenuFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.frag_menu, container, false);
-        Log.e("menu--onCreateView", "menu--onCreateView");
+        Log.e("menu--onCreateView----", "menu--onCreateView");
         ButterKnife.bind(this, view);
         initView();
         return view;
@@ -41,7 +41,7 @@ public class MenuFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.e("menu--onResume", "menu--onResume");
+        Log.e("menu--onResume-----", "menu--onResume");
     }
 
     @Override
@@ -49,13 +49,14 @@ public class MenuFragment extends BaseFragment {
         super.onHiddenChanged(hidden);
 
         if (hidden) {
-            Log.e("menu--onHidden--onPause", "menu--onHiddenChanged");
+            Log.e("menu--Hidden--onPause-----", "menu--onHiddenChanged");
         } else {
-            Log.e("menu--onHden--onResume", "menu--onHiddenChanged");
+            Log.e("menu--Hden--onResume-----", "menu--onHiddenChanged");
         }
     }
 
     private void initView() {
+        Log.e("menu--init--------", "--------menu--init---------");
         titleText.setText("菜单");
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
