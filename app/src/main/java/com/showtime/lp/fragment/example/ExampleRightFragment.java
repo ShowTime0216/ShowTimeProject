@@ -31,6 +31,11 @@ public class ExampleRightFragment extends BaseFragment {
             parent.removeView(view);
         }
 
+
+
+
+
+
         Log.e("right--onCreateView--", "--------------");
 
         initView();
