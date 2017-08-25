@@ -54,9 +54,6 @@ public class MessageFragment extends BaseFragment {
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        if (hidden) {
-        } else {
-        }
     }
 
     @OnClick({R.id.text})

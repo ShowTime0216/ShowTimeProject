@@ -6,9 +6,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.showtime.lp.R;
 import com.showtime.lp.base.BaseFragment;
+import com.showtime.lp.utils.ToastUtils;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Administrator on 2017/8/22 0022.
@@ -16,7 +22,14 @@ import com.showtime.lp.base.BaseFragment;
 
 public class ExampleLeftFragment extends BaseFragment {
 
+    @BindView(R.id.toast1)
+    TextView toast1;
+    @BindView(R.id.toast2)
+    TextView toast2;
+    @BindView(R.id.toast3)
+    TextView toast3;
     private View view;
+    private int number;
 
     @Nullable
     @Override
@@ -31,6 +44,7 @@ public class ExampleLeftFragment extends BaseFragment {
         }
 
         Log.e("left--onCreateView-----", "--------------");
+        ButterKnife.bind(this, view);
         return view;
 
     }
@@ -48,6 +62,22 @@ public class ExampleLeftFragment extends BaseFragment {
             Log.e("left--onResume------", isVisibleToUser + "   --------------");
         } else {
             Log.e("left--onPause-------", isVisibleToUser + "   --------------");
+        }
+    }
+
+    @OnClick({R.id.toast1, R.id.toast2, R.id.toast3})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.toast1:
+                ToastUtils.showToast(getActivity(), "--------111");
+                break;
+            case R.id.toast2:
+                ToastUtils.getetToatsBytTime(getActivity(), "----------222", 100);
+                break;
+            case R.id.toast3:
+                number++;
+                ToastUtils.showToastMsg(getActivity(), "======== " + "3", 1500);
+                break;
         }
     }
 }

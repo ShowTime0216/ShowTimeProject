@@ -23,9 +23,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by Administrator on 2017/8/23 0023.
+ * @author: Trouble Maker
+ * @date: 2017/8/25 0025
+ * @Description:
  */
-
 public class TabLayoutExampleActivity extends BaseActivity {
 
     @BindView(R.id.left_layout)
@@ -36,7 +37,6 @@ public class TabLayoutExampleActivity extends BaseActivity {
     TabLayout tabLayout;
     @BindView(R.id.viewPager)
     ViewPager viewPager;
-    private TabLayoutAdapter tabLayoutAdapter;
     private List<Fragment> fragments = new ArrayList<>();
     private List<String> titles = new ArrayList<>();
 
@@ -55,7 +55,7 @@ public class TabLayoutExampleActivity extends BaseActivity {
         fragments.add(new ExampleRightFragment());
         titles.add("LEFT");
         titles.add("RIGHT");
-        tabLayoutAdapter = new TabLayoutAdapter(getSupportFragmentManager(), fragments, titles);
+        TabLayoutAdapter tabLayoutAdapter = new TabLayoutAdapter(getSupportFragmentManager(), fragments, titles);
         viewPager.setAdapter(tabLayoutAdapter);
         tabLayout.setupWithViewPager(viewPager);
 //        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE); // TabLayout设置tab类型

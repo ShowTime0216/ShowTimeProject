@@ -11,7 +11,8 @@ import com.showtime.lp.R;
 import com.showtime.lp.base.BaseFragment;
 
 /**
- * Created by Administrator on 2017/8/22 0022.
+ * Created by Administrator
+ on 2017/8/22 0022.
  */
 
 public class ExampleRightFragment extends BaseFragment {
@@ -47,9 +48,10 @@ public class ExampleRightFragment extends BaseFragment {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
 
-            Log.e("right--onResume-----", isVisibleToUser + "   --------------");
+            Log.e("right--onResume-----", "   --------------");
         } else {
-            Log.e("right--onPause------", isVisibleToUser + "   --------------");
+            Log.e("right--onPause------", "   --------------");
         }
     }
+
 }
