@@ -39,6 +39,10 @@ public class ExampleRightFragment extends BaseFragment {
     }
 
     private void initView() {
+
+
+
+
         Log.e("right--init--", "--------------");
 
     }
