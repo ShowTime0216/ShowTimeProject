@@ -1,6 +1,8 @@
 package com.showtime.lp.fragment.example;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,7 +12,11 @@ import android.widget.TextView;
 
 import com.showtime.lp.R;
 import com.showtime.lp.base.BaseFragment;
+import com.showtime.lp.utils.ProgressDialogUtils;
 import com.showtime.lp.utils.ToastUtils;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,6 +36,7 @@ public class ExampleLeftFragment extends BaseFragment {
     TextView toast3;
     private View view;
     private int number;
+    private Timer timer;
 
     @Nullable
     @Override
@@ -54,6 +61,20 @@ public class ExampleLeftFragment extends BaseFragment {
         Log.e("left--init-----", "--------------");
     }
 
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 99:
+                    ProgressDialogUtils.closeProgressDiallog();
+                    ToastUtils.showToast(getActivity(), "-----------");
+                    timer.cancel();
+                    break;
+            }
+        }
+    };
+
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
@@ -69,15 +90,27 @@ public class ExampleLeftFragment extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.toast1:
-                ToastUtils.showToast(getActivity(), "--------111");
+                ProgressDialogUtils.createProgressDialog(getActivity());
+                timer = new Timer();
+                MyTimerTask timerTask = new MyTimerTask();
+                timer.schedule(timerTask, 3000, 3000);
                 break;
             case R.id.toast2:
-                ToastUtils.getetToatsBytTime(getActivity(), "----------222", 100);
+                timer = new Timer();
+                MyTimerTask timerTask1 = new MyTimerTask();
+                timer.schedule(timerTask1, 0, 3000);
                 break;
             case R.id.toast3:
                 number++;
-                ToastUtils.showToastMsg(getActivity(), "======== " + "3", 1500);
                 break;
+        }
+    }
+
+    class MyTimerTask extends TimerTask {
+
+        @Override
+        public void run() {
+            handler.sendEmptyMessage(99);
         }
     }
 }
