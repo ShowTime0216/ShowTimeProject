@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="08:59:59"
+                android:textColor="@color/black_8a"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="@color/white_cd" />
+
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:background="@drawable/shape_circle_border" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:background="@color/white_cd" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/play_layout"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:background="@mipmap/icon_wechat_message">
+
+                <View
+                    android:id="@+id/play_view"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="15dp"
+                    android:background="@mipmap/icon_recording" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="12dp">
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="35dp"
+                android:background="@color/blue_3a"
+                android:gravity="center"
+                android:text="123"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="35dp"
+                android:background="@color/white_f0"
+                android:gravity="center"
+                android:text="123"
+                android:textColor="@color/red"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="√ ×"
+                android:textColor="@color/black_35"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

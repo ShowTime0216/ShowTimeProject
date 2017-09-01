@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/tab_title" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5.0"
+            android:textColor="@color/blue_3a"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:text="分"
+            android:textColor="@color/black_8a"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="15dp"
+        android:text="2017-09-01"
+        android:textColor="@color/black_8a"
+        android:textSize="14sp" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:divider="@color/transparent"
+        android:listSelector="@color/transparent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/shape_btn_bg_blue3a"
+            android:gravity="center"
+            android:text="开始"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/shape_btn_bg_blue3a"
+            android:gravity="center"
+            android:text="补点"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_gravity="bottom"
+        android:background="@color/white_f0"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.showtime.lp.view.record.AudioRecordButton
+            android:id="@+id/record_layout"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/shape_circle_border"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/icon_record" />
+
+        </com.showtime.lp.view.record.AudioRecordButton>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="长按语音打点"
+            android:textColor="@color/black_35"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -19,6 +19,10 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+//        File file = new File(Constants.PATH_PROJECT);
+//        if (!file.exists()) {
+//            file.mkdirs();
+//        }
         initSmallVideo(getApplicationContext());
     }
 

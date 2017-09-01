@@ -1,5 +1,6 @@
 package com.showtime.lp.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -10,10 +11,12 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.showtime.lp.R;
+import com.showtime.lp.activity.RecordActivity;
 import com.showtime.lp.base.BaseFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * 作者:liupeng
@@ -25,13 +28,14 @@ public class MenuFragment extends BaseFragment {
     TextView titleText;
     @BindView(R.id.ratingBar)
     RatingBar ratingBar;
+    @BindView(R.id.text1)
+    TextView text1;
     private View view;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.frag_menu, container, false);
-        Log.e("menu--onCreateView----", "menu--onCreateView");
         ButterKnife.bind(this, view);
         initView();
         return view;
@@ -41,7 +45,6 @@ public class MenuFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.e("menu--onResume-----", "menu--onResume");
     }
 
     @Override
@@ -49,14 +52,11 @@ public class MenuFragment extends BaseFragment {
         super.onHiddenChanged(hidden);
 
         if (hidden) {
-            Log.e("menu--Hidden--onPause-----", "menu--onHiddenChanged");
         } else {
-            Log.e("menu--Hden--onResume-----", "menu--onHiddenChanged");
         }
     }
 
     private void initView() {
-        Log.e("menu--init--------", "--------menu--init---------");
         titleText.setText("菜单");
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
@@ -64,5 +64,15 @@ public class MenuFragment extends BaseFragment {
                 Log.e("onRatingChanged", "onRatingChanged");
             }
         });
+    }
+
+    @OnClick({R.id.text1})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.text1:
+                Intent intent = new Intent(getActivity(), RecordActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 }
