@@ -136,7 +136,6 @@ public class AudioRecordButton extends LinearLayout implements AudioStageListene
         switch (action) {
             case MotionEvent.ACTION_DOWN:
                 changeState(STATE_RECORDING);
-                Log.e("---------", "ACTION_DOWN");
                 break;
             case MotionEvent.ACTION_MOVE:
                 if (isRecording) {
@@ -156,11 +155,12 @@ public class AudioRecordButton extends LinearLayout implements AudioStageListene
                 }
                 Log.e("---------", isRecording + "   " + mTime);
                 // 如果按的时间太短，还没准备好或者时间录制太短，就离开了，则显示这个dialog
-                if (!isRecording || mTime < 0.6f) {
-                    mDialogManager.tooShort();
-                    mAudioManager.cancel();
-                    mhandler.sendEmptyMessageDelayed(MSG_DIALOG_DIMISS, 1300); // 持续1.3s
-                } else if (mCurrentState == STATE_RECORDING) { // 正常录制结束
+//                if (!isRecording || mTime < 0.6f) {
+//                    mDialogManager.tooShort();
+//                    mAudioManager.cancel();
+//                    mhandler.sendEmptyMessageDelayed(MSG_DIALOG_DIMISS, 1300); // 持续1.3s
+//                } else
+                    if (mCurrentState == STATE_RECORDING) { // 正常录制结束
                     mDialogManager.dimissDialog();
                     mAudioManager.release(); // release释放一个mediarecorder
                     if (mListener != null) { // 并且callbackActivity，保存录音

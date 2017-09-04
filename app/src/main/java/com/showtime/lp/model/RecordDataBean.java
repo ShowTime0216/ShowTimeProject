@@ -1,7 +1,5 @@
 package com.showtime.lp.model;
 
-import java.util.List;
-
 /**
  * @author: Trouble Maker
  * @date: 2017/9/1 0001
@@ -9,93 +7,62 @@ import java.util.List;
  */
 public class RecordDataBean {
 
-    private int raceId;
-    private List<DataBean> placeList;
+//    private int raceId;
+//    private int placeId;
 
-    public int getRaceId() {
-        return raceId;
+    private int id;
+    private String time;
+    private String recordUrl;
+    private String number;
+    private String numScore;
+    private String valid;
+
+    public int getId() {
+        return id;
     }
 
-    public void setRaceId(int raceId) {
-        this.raceId = raceId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public List<DataBean> getPlaceList() {
-        return placeList;
+    public String getTime() {
+        return time;
     }
 
-    public void setPlaceList(List<DataBean> placeList) {
-        this.placeList = placeList;
+    public void setTime(String time) {
+        this.time = time;
     }
 
-    public class DataBean {
-        private int placeId;
-        private List<DataBean.RaceContent> contentList;
-
-        public int getPlaceId() {
-            return placeId;
-        }
-
-        public void setPlaceId(int placeId) {
-            this.placeId = placeId;
-        }
-
-        public List<RaceContent> getContentList() {
-            return contentList;
-        }
-
-        public void setContentList(List<RaceContent> contentList) {
-            this.contentList = contentList;
-        }
-
-        public class RaceContent {
-
-            private String time;
-            private String recordUrl;
-            private String number;
-            private String numScore;
-            private String valid;
-
-            public String getTime() {
-                return time;
-            }
-
-            public void setTime(String time) {
-                this.time = time;
-            }
-
-            public String getRecordUrl() {
-                return recordUrl;
-            }
-
-            public void setRecordUrl(String recordUrl) {
-                this.recordUrl = recordUrl;
-            }
-
-            public String getNumber() {
-                return number;
-            }
-
-            public void setNumber(String number) {
-                this.number = number;
-            }
-
-            public String getNumScore() {
-                return numScore;
-            }
-
-            public void setNumScore(String numScore) {
-                this.numScore = numScore;
-            }
-
-            public String getValid() {
-                return valid;
-            }
-
-            public void setValid(String valid) {
-                this.valid = valid;
-            }
-        }
-
+    public String getRecordUrl() {
+        return recordUrl;
     }
+
+    public void setRecordUrl(String recordUrl) {
+        this.recordUrl = recordUrl;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getNumScore() {
+        return numScore;
+    }
+
+    public void setNumScore(String numScore) {
+        this.numScore = numScore;
+    }
+
+    public String getValid() {
+        return valid;
+    }
+
+    public void setValid(String valid) {
+        this.valid = valid;
+    }
+
 }

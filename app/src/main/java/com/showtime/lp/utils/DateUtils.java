@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * 作者:liupeng
@@ -103,6 +104,42 @@ public class DateUtils {
             return "星期日";
         }
         return "";
+    }
+
+    /**
+     * 字符串转时间戳
+     *
+     * @param timeString
+     * @return
+     */
+    public static String getStrToTime(String timeString) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
+        Date date;
+        String times = null;
+        try {
+            date = sdf.parse(timeString);
+            long l = date.getTime();
+            String stf = String.valueOf(l);
+            times = stf.substring(0, 10);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return times;
+    }
+
+    /**
+     * 时间戳转字符串
+     *
+     * @param timeStamp
+     * @return
+     */
+    public static String getTimeToStr(String timeStamp) {
+        SimpleDateFormat sdr = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
+        @SuppressWarnings("unused")
+        long lcc = Long.valueOf(timeStamp);
+        int i = Integer.parseInt(timeStamp);
+        String times = sdr.format(new Date(i * 1000L));
+        return times;
     }
 
     /**

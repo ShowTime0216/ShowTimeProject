@@ -57,17 +57,20 @@
         android:layout_marginTop="10dp">
 
         <TextView
+            android:id="@+id/left_text"
             android:layout_width="80dp"
             android:layout_height="35dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
             android:background="@drawable/shape_btn_bg_blue3a"
             android:gravity="center"
-            android:text="开始"
+            android:text="结束"
             android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:visibility="gone" />
 
         <TextView
+            android:id="@+id/right_text"
             android:layout_width="80dp"
             android:layout_height="35dp"
             android:layout_alignParentRight="true"
@@ -104,10 +107,11 @@
         </com.showtime.lp.view.record.AudioRecordButton>
 
         <TextView
+            android:id="@+id/record_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="长按语音打点"
+            android:text="开始评分"
             android:textColor="@color/black_35"
             android:textSize="14sp" />
 

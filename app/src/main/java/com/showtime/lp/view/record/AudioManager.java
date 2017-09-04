@@ -25,7 +25,7 @@ public class AudioManager {
     private static AudioManager mInstance;
 
     private AudioManager(String dir) {
-        mDirString=dir;
+        mDirString = dir;
     }
 
     public static AudioManager getInstance(String dir) {
@@ -45,7 +45,6 @@ public class AudioManager {
      * 回调函数，准备完毕，准备好后，button才会开始显示录音框
      *
      * @author nickming
-     *
      */
     public interface AudioStageListener {
         void wellPrepared();
@@ -131,10 +130,13 @@ public class AudioManager {
     // 释放资源
     public void release() {
         // 严格按照api流程进行
-        mRecorder.stop();
-        mRecorder.release();
-        mRecorder = null;
-
+        try {
+            mRecorder.stop();
+            mRecorder.release();
+            mRecorder = null;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // 取消,因为prepare时产生了一个文件，所以cancel方法应该要删除这个文件，
