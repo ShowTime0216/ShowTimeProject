@@ -1,10 +1,11 @@
 package com.showtime.lp.fragment.example;
 
-import android.media.MediaPlayer;
+import android.content.pm.PackageManager;
 import android.media.MediaRecorder;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +14,10 @@ import android.widget.TextView;
 
 import com.showtime.lp.R;
 import com.showtime.lp.base.BaseFragment;
+import com.showtime.lp.utils.Constants;
 import com.showtime.lp.utils.ToastUtils;
 
+import java.io.File;
 import java.io.IOException;
 
 import butterknife.BindView;
@@ -38,14 +41,6 @@ public class ExampleRightFragment extends BaseFragment {
     TextView toast4;
     private View view;
 
-    private static final String LOG_TAG = "AudioRecordTest";
-    //语音文件保存路径
-    private String FileName = null;
-
-    //语音操作对象
-    private MediaPlayer mPlayer = null;
-    private MediaRecorder mRecorder = null;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -58,7 +53,6 @@ public class ExampleRightFragment extends BaseFragment {
             parent.removeView(view);
         }
 
-        Log.e("right--onCreateView--", "--------------");
 
         initView();
 
@@ -68,18 +62,12 @@ public class ExampleRightFragment extends BaseFragment {
 
     private void initView() {
 
-        Log.e("right--init--", "--------------");
-
-        //设置sdcard的路径
-        FileName = Environment.getExternalStorageDirectory().getAbsolutePath();
-        FileName += "/audiorecordtest.3gp";
     }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
-
             Log.e("right--onResume-----", "   --------------");
         } else {
             Log.e("right--onPause------", "   --------------");
@@ -90,46 +78,43 @@ public class ExampleRightFragment extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.toast1:
-                mRecorder = new MediaRecorder();
-                mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-                mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-                mRecorder.setOutputFile(FileName);
-                mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-                try {
-                    mRecorder.prepare();
-                } catch (IOException e) {
-                    Log.e(LOG_TAG, "prepare() failed");
+                if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.RECORD_AUDIO}, 1);
+                    ToastUtils.getetToatsBytTime(getActivity(), "开始！！！", 500);
+                } else {
+                    ToastUtils.getetToatsBytTime(getActivity(), "结束！！！", 500);
                 }
-                mRecorder.start();
-                ToastUtils.getetToatsBytTime(getActivity(), "开始录音！！！", 500);
                 break;
             case R.id.toast2:
-                if (mRecorder != null) {
-                    mRecorder.stop();
-                    mRecorder.release();
-                    mRecorder = null;
-                    ToastUtils.getetToatsBytTime(getActivity(), "结束录音！！！", 500);
-                }
+                MediaRecorder mRecorders = new MediaRecorder();
+                mRecorders.setAudioSource(MediaRecorder.AudioSource.MIC);
                 break;
             case R.id.toast3:
-                mPlayer = new MediaPlayer();
-                try {
-                    mPlayer.setDataSource(FileName);
-                    mPlayer.prepare();
-                    mPlayer.start();
-                    ToastUtils.getetToatsBytTime(getActivity(), "开始播放！！！", 500);
-                } catch (IOException e) {
-                    Log.e(LOG_TAG, "播放失败");
-                }
+                Log.e("333---------", voicePermission() + "");
+                    MediaRecorder recorder = new MediaRecorder();
+                    recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+                    recorder.setOutputFormat(MediaRecorder.OutputFormat.AAC_ADTS);
+                    recorder.setAudioChannels(1);
+                    recorder.setAudioSamplingRate(8000);
+                    recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
+                    File file = new File(Constants.PATH_PROJECT, "asd.amr");
+                    recorder.setOutputFile(file.getAbsolutePath());
+                    try {
+                        recorder.prepare();
+                        recorder.start();
+                        recorder.stop();
+                        recorder.release();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 break;
             case R.id.toast4:
-                if (mPlayer != null) {
-                    mPlayer.release();
-                    mPlayer = null;
-                    ToastUtils.getetToatsBytTime(getActivity(), "结束播放！！！", 500);
-                }
                 break;
         }
     }
 
+    private boolean voicePermission() {
+        return (PackageManager.PERMISSION_GRANTED == ContextCompat.
+                checkSelfPermission(getActivity(), android.Manifest.permission.RECORD_AUDIO));
+    }
 }

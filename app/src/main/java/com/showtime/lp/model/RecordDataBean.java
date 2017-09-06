@@ -16,6 +16,33 @@ public class RecordDataBean {
     private String number;
     private String numScore;
     private String valid;
+    private String score;
+    private String isRead;
+    private String duration;
+
+    public String getIsRead() {
+        return isRead;
+    }
+
+    public void setIsRead(String isRead) {
+        this.isRead = isRead;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
 
     public int getId() {
         return id;

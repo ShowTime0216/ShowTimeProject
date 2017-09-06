@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.showtime.lp.R;
 import com.showtime.lp.activity.RecordActivity;
+import com.showtime.lp.activity.ViewScrollActivity;
 import com.showtime.lp.base.BaseFragment;
 
 import butterknife.BindView;
@@ -30,6 +31,8 @@ public class MenuFragment extends BaseFragment {
     RatingBar ratingBar;
     @BindView(R.id.text1)
     TextView text1;
+    @BindView(R.id.text2)
+    TextView text2;
     private View view;
 
     @Nullable
@@ -66,11 +69,16 @@ public class MenuFragment extends BaseFragment {
         });
     }
 
-    @OnClick({R.id.text1})
+    @OnClick({R.id.text1, R.id.text2})
     public void onClick(View view) {
+        Intent intent;
         switch (view.getId()) {
             case R.id.text1:
-                Intent intent = new Intent(getActivity(), RecordActivity.class);
+                intent = new Intent(getActivity(), RecordActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.text2:
+                intent = new Intent(getActivity(), ViewScrollActivity.class);
                 startActivity(intent);
                 break;
         }

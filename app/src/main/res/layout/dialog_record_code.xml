@@ -27,6 +27,7 @@
             android:gravity="center"
             android:hint="请输入编码"
             android:inputType="number"
+            android:maxLength="4"
             android:singleLine="true"
             android:textSize="14sp" />
 

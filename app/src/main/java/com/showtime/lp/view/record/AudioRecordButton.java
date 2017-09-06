@@ -138,14 +138,14 @@ public class AudioRecordButton extends LinearLayout implements AudioStageListene
                 changeState(STATE_RECORDING);
                 break;
             case MotionEvent.ACTION_MOVE:
-                if (isRecording) {
-                    // 根据x，y来判断用户是否想要取消
-                    if (wantToCancel(x, y)) {
-                        changeState(STATE_WANT_TO_CANCEL);
-                    } else {
-                        changeState(STATE_RECORDING);
-                    }
-                }
+//                if (isRecording) {
+//                    // 根据x，y来判断用户是否想要取消
+//                    if (wantToCancel(x, y)) {
+//                        changeState(STATE_WANT_TO_CANCEL);
+//                    } else {
+//                        changeState(STATE_RECORDING);
+//                    }
+//                }
                 break;
             case MotionEvent.ACTION_UP:
                 // 首先判断是否有触发onlongclick事件，没有的话直接返回reset

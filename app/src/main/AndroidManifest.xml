@@ -63,6 +63,9 @@
         <activity
             android:name=".activity.RecordActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ViewScrollActivity"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>
