@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.showtime.lp.R;
 import com.showtime.lp.base.BaseActivity;
@@ -41,6 +42,7 @@ public class ViewScrollActivity extends BaseActivity {
     private ViewScrollAdapter viewScrollAdapter;
     private int pointIndex = 0;
     private LinearLayoutManager linearLayoutManager;
+    private List<String> list = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,14 +50,10 @@ public class ViewScrollActivity extends BaseActivity {
         setContentView(R.layout.activity_example_scroll);
         ButterKnife.bind(this);
 
-
         initView();
-
     }
 
     private void initView() {
-
-        List<String> list = new ArrayList<>();
         list.add("a");
         list.add("b");
         list.add("c");
@@ -71,21 +69,43 @@ public class ViewScrollActivity extends BaseActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         viewScrollAdapter = new ViewScrollAdapter(ViewScrollActivity.this, list);
         recyclerView.setAdapter(viewScrollAdapter);
+        if (list != null && list.size() > 0) {
+            indexText.setText("1/" + list.size());
+        }
     }
 
     @OnClick({R.id.left_btn, R.id.right_btn})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.left_btn:
-                pointIndex++;
-//                viewScrollAdapter.notifyDataSetChanged();
 //                recyclerView.scrollToPosition(pointIndex);
-                TextView textView = (TextView) recyclerView.getChildAt(pointIndex - linearLayoutManager.findFirstVisibleItemPosition()).findViewById(R.id.point_text);
-                textView.setVisibility(View.VISIBLE);
+//                recyclerView.scrollBy(150, 0);
+//                TextView textView = (TextView) recyclerView.getChildAt(pointIndex - linearLayoutManager.findFirstVisibleItemPosition()).findViewById(R.id.point_text);
+//                textView.setVisibility(View.VISIBLE);
+                if (list != null && list.size() > 0) {
+                    if (pointIndex == list.size() - 1) {
+                        Toast.makeText(this, pointIndex + "最后一条", Toast.LENGTH_SHORT).show();
+                    } else {
+                        pointIndex++;
+                        linearLayoutManager.scrollToPositionWithOffset(pointIndex, 0);
+                        viewScrollAdapter.notifyDataSetChanged();
+                        indexText.setText(pointIndex + 1 + "/" + list.size());
+                        Toast.makeText(this, pointIndex + "  ----", Toast.LENGTH_SHORT).show();
+                    }
+                }
                 break;
             case R.id.right_btn:
-                pointIndex++;
-//                viewScrollAdapter.notifyDataSetChanged();
+                if (list != null && list.size() > 0) {
+                    if (pointIndex == list.size() - 1) {
+                        Toast.makeText(this, pointIndex + "最后一条", Toast.LENGTH_SHORT).show();
+                    } else {
+                        pointIndex++;
+                        linearLayoutManager.scrollToPositionWithOffset(pointIndex, 0);
+                        viewScrollAdapter.notifyDataSetChanged();
+                        indexText.setText(pointIndex + 1 + "/" + list.size());
+                        Toast.makeText(this, pointIndex + "  ----", Toast.LENGTH_SHORT).show();
+                    }
+                }
                 break;
         }
     }
@@ -116,7 +136,13 @@ public class ViewScrollActivity extends BaseActivity {
             } else {
                 holder.line_view.setVisibility(View.GONE);
             }
+            holder.number_text.setText(position + 1 + "");
 
+            if (pointIndex == position) {
+                holder.point_text.setVisibility(View.VISIBLE);
+            } else {
+                holder.point_text.setVisibility(View.GONE);
+            }
 
         }
 

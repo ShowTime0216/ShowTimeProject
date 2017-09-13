@@ -1,5 +1,6 @@
 package com.showtime.lp.fragment.example;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.showtime.lp.R;
+import com.showtime.lp.activity.AActivity;
 import com.showtime.lp.base.BaseFragment;
 import com.showtime.lp.utils.ProgressDialogUtils;
 import com.showtime.lp.utils.ToastUtils;
@@ -96,12 +98,16 @@ public class ExampleLeftFragment extends BaseFragment {
                 timer.schedule(timerTask, 3000, 3000);
                 break;
             case R.id.toast2:
-                timer = new Timer();
-                MyTimerTask timerTask1 = new MyTimerTask();
-                timer.schedule(timerTask1, 0, 3000);
+                String str = "12345";
+                ToastUtils.showToast(getActivity(), str.length() + "");
+//                timer = new Timer();
+//                MyTimerTask timerTask1 = new MyTimerTask();
+//                timer.schedule(timerTask1, 0, 3000);
                 break;
             case R.id.toast3:
                 number++;
+                Intent intent = new Intent(getActivity(), AActivity.class);
+                startActivity(intent);
                 break;
         }
     }

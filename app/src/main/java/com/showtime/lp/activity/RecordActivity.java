@@ -8,11 +8,9 @@ import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +27,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.showtime.lp.R;
 import com.showtime.lp.base.BaseActivity;
 import com.showtime.lp.database.DataBaseHelper;
+import com.showtime.lp.model.NumberCodeBean;
 import com.showtime.lp.model.RecordDataBean;
 import com.showtime.lp.view.record.AudioRecordButton;
 import com.showtime.lp.view.record.MediaManager;
@@ -193,7 +192,7 @@ public class RecordActivity extends BaseActivity {
         } else {
             cv.put("number", "");
         }
-        cv.put("numScore", "0.1");
+        cv.put("numScore", "");
         if (list != null && list.size() > 0) {
             cv.put("score", list.get(0).getScore());
         } else {
@@ -209,8 +208,12 @@ public class RecordActivity extends BaseActivity {
         if (!TextUtils.isEmpty(number)) { // 补点需要改变title的总得分
             ContentValues c = new ContentValues();
             if (list != null && list.size() > 0) {
+                if (TextUtils.isEmpty(checkNumber(number))) {
+                    Toast.makeText(context, "输入的编号不存在", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 BigDecimal b1 = new BigDecimal(list.get(0).getScore());
-                BigDecimal b2 = new BigDecimal("0.1");
+                BigDecimal b2 = new BigDecimal(checkNumber(number));
                 for (int i = 0; i < list.size(); i++) {
                     c.put("score", String.valueOf(b1.subtract(b2)));
                     dataBase.update(idType, c, "id=?", new String[]{String.valueOf(list.get(i).getId())});
@@ -258,7 +261,7 @@ public class RecordActivity extends BaseActivity {
                 InputMethodManager imm = (InputMethodManager) score_et.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.showSoftInput(score_et, 0);
             }
-        }, 200);
+        }, 100);
         submit_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -291,55 +294,18 @@ public class RecordActivity extends BaseActivity {
                 InputMethodManager imm = (InputMethodManager) hour_et.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.showSoftInput(hour_et, 0);
             }
-        }, 200);
-
-
-        InputFilter[] inputFilters = {new InputFilter() {
-            @Override
-            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-                String sourceText = source.toString();
-                String destText = dest.toString();
-                //验证删除等按键
-                if (TextUtils.isEmpty(sourceText)) {
-                    return "";
-                }
-                if (Float.parseFloat(destText + sourceText) > 100000.00) {
-                    Toast.makeText(context, "超出最大金额10万元，请分开记录", Toast.LENGTH_SHORT).show();
-                    return dest.subSequence(dstart, dend);
-                }
-                return dest.subSequence(dstart, dend) + sourceText;
-            }
-        }};
-        hour_et.setFilters(inputFilters);
-
-        hour_et.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                if (TextUtils.isEmpty(s.toString()) || Integer.parseInt(s.toString()) > 24) {
-//                    Log.e("hour---------", s + "     " + start + "     " + before + "    " + count);
-//                    hour_et.setText(s + "");
-//                    return;
-//                }
-//                hour_et.setText(start + "      " + before + "     " + s);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+        }, 100);
+        dateSetting(hour_et, 23);
+        dateSetting(minute_et, 59);
+        dateSetting(second_et, 59);
         ok_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!TextUtils.isEmpty(hour_et.getText().toString()) && !TextUtils.isEmpty(minute_et.getText().toString())
                         && !TextUtils.isEmpty(second_et.getText().toString()) && !TextUtils.isEmpty(code_et.getText().toString())) {
                     dialog.dismiss();
-                    String time = hour_et.getText().toString().trim() + ":" + minute_et.getText().toString().trim() + ":" + second_et.getText().toString().trim();
+                    String time = timeType(hour_et.getText().toString().trim()) + ":" + timeType(minute_et.getText().toString().trim()) + ":"
+                            + timeType(second_et.getText().toString().trim());
                     addData("", "0''", time, code_et.getText().toString().trim());
                 } else {
                     Toast.makeText(context, "请输入完整数据", Toast.LENGTH_SHORT).show();
@@ -352,6 +318,41 @@ public class RecordActivity extends BaseActivity {
                 dialog.dismiss();
             }
         });
+    }
+
+    /**
+     * 统一时间格式
+     */
+    private String timeType(String time) {
+        String str;
+        if (time.length() == 1) {
+            str = "0" + time;
+        } else {
+            str = time;
+        }
+        return str;
+    }
+
+    /**
+     * 输入的时间验证
+     */
+    private void dateSetting(EditText editText, final int time) {
+        InputFilter[] inputFilters = {new InputFilter() {
+            @Override
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                String sourceText = source.toString();
+                String destText = dest.toString();
+                //验证删除等按键
+                if (TextUtils.isEmpty(sourceText) || sourceText.contains("-")) {
+                    return "";
+                }
+                if (Integer.valueOf(destText + sourceText) > time) {
+                    return dest.subSequence(dstart, dend);
+                }
+                return dest.subSequence(dstart, dend) + sourceText;
+            }
+        }};
+        editText.setFilters(inputFilters);
     }
 
     /**
@@ -373,6 +374,69 @@ public class RecordActivity extends BaseActivity {
             e.printStackTrace();
         }
         return result;
+    }
+
+    /**
+     * 本地动作编码和分数
+     */
+    private String checkNumber(String num) {
+        List<NumberCodeBean> list = new ArrayList<>();
+        NumberCodeBean bean1 = new NumberCodeBean();
+        bean1.setNumber("70");
+        bean1.setScore("-0.1");
+        list.add(bean1);
+        NumberCodeBean bean2 = new NumberCodeBean();
+        bean2.setNumber("71");
+        bean2.setScore("-0.2");
+        list.add(bean2);
+        NumberCodeBean bean3 = new NumberCodeBean();
+        bean3.setNumber("72");
+        bean3.setScore("-0.3");
+        list.add(bean3);
+        NumberCodeBean bean4 = new NumberCodeBean();
+        bean4.setNumber("73");
+        bean4.setScore("-0.1");
+        list.add(bean4);
+        NumberCodeBean bean5 = new NumberCodeBean();
+        bean5.setNumber("74");
+        bean5.setScore("-0.2");
+        list.add(bean5);
+        NumberCodeBean bean6 = new NumberCodeBean();
+        bean6.setNumber("75");
+        bean6.setScore("-0.3");
+        list.add(bean6);
+        NumberCodeBean bean7 = new NumberCodeBean();
+        bean7.setNumber("76");
+        bean7.setScore("-0.1");
+        list.add(bean7);
+        NumberCodeBean bean8 = new NumberCodeBean();
+        bean8.setNumber("77");
+        bean8.setScore("-0.1");
+        list.add(bean8);
+        NumberCodeBean bean9 = new NumberCodeBean();
+        bean9.setNumber("78");
+        bean9.setScore("-0.1");
+        list.add(bean9);
+        NumberCodeBean bean10 = new NumberCodeBean();
+        bean10.setNumber("79");
+        bean10.setScore("-0.1");
+        list.add(bean10);
+        List<String> numList = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            numList.add(list.get(i).getNumber());
+        }
+        String score = null;
+        for (int k = 0; k < list.size(); k++) {
+            if (!numList.contains(num)) { // 判断输入的编号是否存在
+                score = "";
+                break;
+            } else {
+                if (num.equals(list.get(k).getNumber())) {
+                    score = list.get(k).getScore().substring(1, list.get(k).getScore().length() - 1);
+                }
+            }
+        }
+        return score;
     }
 
     @Override
@@ -512,7 +576,7 @@ public class RecordActivity extends BaseActivity {
                     InputMethodManager imm = (InputMethodManager) code_et.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.showSoftInput(code_et, 0);
                 }
-            }, 200);
+            }, 100);
             if (!TextUtils.isEmpty(number)) {
                 code_et.setText(number);
             }
@@ -522,11 +586,14 @@ public class RecordActivity extends BaseActivity {
                     if (TextUtils.isEmpty(code_et.getText().toString())) {
                         Toast.makeText(mContext, "请输入编号", Toast.LENGTH_SHORT).show();
                     } else {
-                        dialog.dismiss();
                         ContentValues cv = new ContentValues();
                         if (list != null && list.size() > 0) {
+                            if (TextUtils.isEmpty(checkNumber(code_et.getText().toString().trim()))) {
+                                Toast.makeText(mContext, "输入的编号不存在", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
                             BigDecimal b1 = new BigDecimal(list.get(0).getScore());
-                            BigDecimal b2 = new BigDecimal("0.1");
+                            BigDecimal b2 = new BigDecimal(checkNumber(code_et.getText().toString().trim()));
                             for (int i = 0; i < list.size(); i++) {
                                 cv.put("score", String.valueOf(b1.subtract(b2)));
                                 dataBase.update(idType, cv, "id=?", new String[]{String.valueOf(list.get(i).getId())});
@@ -540,6 +607,7 @@ public class RecordActivity extends BaseActivity {
                         if (list != null && list.size() > 0) {
                             titleScore.setText(list.get(0).getScore());
                         }
+                        dialog.dismiss();
                         Log.e("updata--------list", bean.getId() + "    " + list.size() + "     " + titleScore.getText());
                     }
                 }
