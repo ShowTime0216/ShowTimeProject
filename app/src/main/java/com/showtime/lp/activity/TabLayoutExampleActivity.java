@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,6 +13,7 @@ import com.showtime.lp.adapter.TabLayoutAdapter;
 import com.showtime.lp.base.BaseActivity;
 import com.showtime.lp.fragment.example.ExampleLeftFragment;
 import com.showtime.lp.fragment.example.ExampleRightFragment;
+import com.showtime.lp.view.MyViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ public class TabLayoutExampleActivity extends BaseActivity {
     @BindView(R.id.tabLayout)
     TabLayout tabLayout;
     @BindView(R.id.viewPager)
-    ViewPager viewPager;
+    MyViewPager viewPager;
     private List<Fragment> fragments = new ArrayList<>();
     private List<String> titles = new ArrayList<>();
 
@@ -55,6 +55,7 @@ public class TabLayoutExampleActivity extends BaseActivity {
         fragments.add(new ExampleRightFragment());
         titles.add("LEFT");
         titles.add("RIGHT");
+//        viewPager.setOffscreenPageLimit(0);
         TabLayoutAdapter tabLayoutAdapter = new TabLayoutAdapter(getSupportFragmentManager(), fragments, titles);
         viewPager.setAdapter(tabLayoutAdapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -69,4 +70,12 @@ public class TabLayoutExampleActivity extends BaseActivity {
                 break;
         }
     }
+
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        android.os.Process.killProcess(android.os.Process.myPid());
+//    }
+
+
 }

@@ -21,7 +21,7 @@ public class AudioRecordButton extends LinearLayout implements AudioStageListene
     private int mCurrentState = STATE_NORMAL;
     // 已经开始录音
     private boolean isRecording = false;
-    private DialogManager mDialogManager;
+    //    private DialogManager mDialogManager;
     private AudioManager mAudioManager;
     private float mTime = 0;
     // 是否触发了onlongclick，准备好了
@@ -40,7 +40,7 @@ public class AudioRecordButton extends LinearLayout implements AudioStageListene
         super(context, attrs);
 
         vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-        mDialogManager = new DialogManager(getContext());
+//        mDialogManager = new DialogManager(getContext());
 
         // 这里没有判断储存卡是否存在，有空要判断
 //        mAudioManager = AudioManager.getInstance(Constants.PATH_PROJECT);
@@ -57,6 +57,7 @@ public class AudioRecordButton extends LinearLayout implements AudioStageListene
             }
         });
     }
+
 
     /**
      * 录音完成后的回调，回调给activiy，可以获得mtime和文件的路径
@@ -100,14 +101,14 @@ public class AudioRecordButton extends LinearLayout implements AudioStageListene
             switch (msg.what) {
                 case MSG_AUDIO_PREPARED:
                     // 显示应该是在audio end prepare之后回调
-                    mDialogManager.showRecordingDialog();
+//                    mDialogManager.showRecordingDialog();
                     isRecording = true;
                     new Thread(mGetVoiceLevelRunnable).start();
 
                     // 需要开启一个线程来变换音量
                     break;
                 case MSG_VOICE_CHANGE:
-                    mDialogManager.updateVoiceLevel(mAudioManager.getVoiceLevel(7));
+//                    mDialogManager.updateVoiceLevel(mAudioManager.getVoiceLevel(7));
 
                     break;
                 case MSG_DIALOG_DIMISS:
@@ -136,6 +137,11 @@ public class AudioRecordButton extends LinearLayout implements AudioStageListene
         switch (action) {
             case MotionEvent.ACTION_DOWN:
                 changeState(STATE_RECORDING);
+                Log.e("event-----", "down------    " + mTime);
+                break;
+            case MotionEvent.ACTION_CANCEL:
+                Log.e("event-----", "cancel------   " + mTime);
+                mAudioManager.release();
                 break;
             case MotionEvent.ACTION_MOVE:
 //                if (isRecording) {
@@ -146,6 +152,7 @@ public class AudioRecordButton extends LinearLayout implements AudioStageListene
 //                        changeState(STATE_RECORDING);
 //                    }
 //                }
+                Log.e("event-----", "move------" + mTime);
                 break;
             case MotionEvent.ACTION_UP:
                 // 首先判断是否有触发onlongclick事件，没有的话直接返回reset
@@ -153,22 +160,22 @@ public class AudioRecordButton extends LinearLayout implements AudioStageListene
                     reset();
                     return super.onTouchEvent(event);
                 }
-                Log.e("---------", isRecording + "   " + mTime);
+                Log.e("event-----", "up-----   " + isRecording + "    " + mTime);
                 // 如果按的时间太短，还没准备好或者时间录制太短，就离开了，则显示这个dialog
 //                if (!isRecording || mTime < 0.6f) {
 //                    mDialogManager.tooShort();
 //                    mAudioManager.cancel();
 //                    mhandler.sendEmptyMessageDelayed(MSG_DIALOG_DIMISS, 1300); // 持续1.3s
 //                } else
-                    if (mCurrentState == STATE_RECORDING) { // 正常录制结束
-                    mDialogManager.dimissDialog();
+                if (mCurrentState == STATE_RECORDING) { // 正常录制结束
+//                        mDialogManager.dimissDialog();
                     mAudioManager.release(); // release释放一个mediarecorder
                     if (mListener != null) { // 并且callbackActivity，保存录音
                         mListener.onFinished(mTime, mAudioManager.getCurrentFilePath());
                     }
                 } else if (mCurrentState == STATE_WANT_TO_CANCEL) {
                     mAudioManager.cancel();
-                    mDialogManager.dimissDialog();
+//                        mDialogManager.dimissDialog();
                 }
                 reset();// 恢复标志位
                 break;
@@ -209,7 +216,7 @@ public class AudioRecordButton extends LinearLayout implements AudioStageListene
 //                    setBackgroundResource(R.drawable.button_recording);
 //                    setText("松开 结束");
                     if (isRecording) {
-                        mDialogManager.recording();
+//                        mDialogManager.recording();
                         // 复写dialog.recording();
                     }
                     break;
@@ -217,7 +224,7 @@ public class AudioRecordButton extends LinearLayout implements AudioStageListene
 //                    setBackgroundResource(R.drawable.button_recording);
 //                    setText("松开手指，取消发送");
                     // dialog want to cancel
-                    mDialogManager.wantToCancel();
+//                    mDialogManager.wantToCancel();
                     break;
             }
         }

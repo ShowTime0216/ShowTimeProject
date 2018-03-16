@@ -1,6 +1,7 @@
 package com.showtime.lp.fragment;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.showtime.lp.R;
 import com.showtime.lp.activity.RecordActivity;
@@ -74,6 +76,7 @@ public class MenuFragment extends BaseFragment {
         Intent intent;
         switch (view.getId()) {
             case R.id.text1:
+                Toast.makeText(getActivity(), Build.CPU_ABI + "        " + Build.CPU_ABI2, Toast.LENGTH_LONG).show();
                 intent = new Intent(getActivity(), RecordActivity.class);
                 startActivity(intent);
                 break;

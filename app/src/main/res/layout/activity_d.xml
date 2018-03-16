@@ -6,16 +6,14 @@
 
     <include layout="@layout/tab_title" />
 
-
     <TextView
         android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:text="Click One"
+        android:text="Click D !!!"
         android:textColor="@color/blue_00"
         android:textSize="18sp" />
-
 
 </LinearLayout>

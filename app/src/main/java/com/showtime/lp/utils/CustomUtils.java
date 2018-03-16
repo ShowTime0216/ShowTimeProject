@@ -1,6 +1,8 @@
 package com.showtime.lp.utils;
 
 import android.text.Editable;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.widget.EditText;
@@ -15,6 +17,30 @@ import java.util.regex.Pattern;
  */
 
 public class CustomUtils {
+
+    /**
+     * 输入的时间验证
+     */
+    private void dateSetting(EditText editText, final int time) {
+        InputFilter[] inputFilters = {new InputFilter() {
+            @Override
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                String sourceText = source.toString();
+                String destText = dest.toString();
+                Pattern p = Pattern.compile("[0-9]*");
+                Matcher m = p.matcher(sourceText);
+                //验证删除等按键
+                if (TextUtils.isEmpty(sourceText) || !m.matches()) {
+                    return "";
+                }
+                if (Integer.valueOf(destText + sourceText) > time) {
+                    return dest.subSequence(dstart, dend);
+                }
+                return dest.subSequence(dstart, dend) + sourceText;
+            }
+        }};
+        editText.setFilters(inputFilters);
+    }
 
     public static String deal_phone(String phone_num) {
         if (TextUtils.isEmpty(phone_num) || phone_num.length() != 11 ){

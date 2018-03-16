@@ -19,7 +19,7 @@
         app:tabSelectedTextColor="@color/blue_00"
         app:tabTextColor="#5f6062" />
 
-    <android.support.v4.view.ViewPager
+    <com.showtime.lp.view.MyViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

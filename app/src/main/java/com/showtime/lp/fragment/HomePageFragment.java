@@ -16,6 +16,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.showtime.lp.R;
 import com.showtime.lp.activity.ProjectActivity;
 import com.showtime.lp.base.BaseFragment;
+import com.showtime.lp.utils.FunctionUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 
@@ -86,9 +87,9 @@ public class HomePageFragment extends BaseFragment {
         super.onHiddenChanged(hidden);
 
         if (hidden) {
-            Log.e("home-hidden--onPause-----", "home--onHiddenChanged");
+            Log.e("home-hidden--onPause----", "home--onHiddenChanged");
         } else {
-            Log.e("home-hden--onResume-----", "home--onHiddenChanged");
+            Log.e("home-hden--onResume----", "home--onHiddenChanged");
         }
     }
 
@@ -128,6 +129,7 @@ public class HomePageFragment extends BaseFragment {
         super.onClick(v);
         switch (v.getId()) {
             case R.id.textView:
+                Log.e("------", FunctionUtils.getScreenWidth(getActivity()) + "   ------   " + FunctionUtils.getScreenHeight(getActivity()));
                 Intent intent = new Intent(getActivity(), ProjectActivity.class);
 //                startActivity(intent);
                 getActivity().startActivityForResult(intent, 15);

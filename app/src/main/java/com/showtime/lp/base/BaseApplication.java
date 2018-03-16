@@ -6,7 +6,6 @@ import android.os.Environment;
 
 import com.showtime.lp.MainActivity;
 import com.showtime.lp.R;
-import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;
 
 import java.io.File;
@@ -97,7 +96,7 @@ public class BaseApplication extends Application {
          */
         Beta.upgradeDialogLayoutId = R.layout.upgrade_dialog;
 
-        Bugly.init(getApplicationContext(), "ebf421dda9", true);
+//        Bugly.init(getApplicationContext(), "e8b95b9a53", true);
     }
 
     public static void initSmallVideo(Context context) {

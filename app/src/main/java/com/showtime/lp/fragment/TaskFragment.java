@@ -1,5 +1,6 @@
 package com.showtime.lp.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -8,7 +9,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.showtime.lp.R;
+import com.showtime.lp.activity.AActivity;
 import com.showtime.lp.base.BaseFragment;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * 作者:liupeng
@@ -16,8 +22,12 @@ import com.showtime.lp.base.BaseFragment;
  * 注释:
  */
 public class TaskFragment extends BaseFragment {
+
+    @BindView(R.id.title_text)
+    TextView titleText;
+    @BindView(R.id.text1)
+    TextView text1;
     private View view;
-    private TextView titleText;
 
     @Nullable
     @Override
@@ -30,6 +40,7 @@ public class TaskFragment extends BaseFragment {
         if (parent != null) {
             parent.removeView(view);
         }
+        ButterKnife.bind(this, view);
         return view;
     }
 
@@ -37,5 +48,15 @@ public class TaskFragment extends BaseFragment {
         titleText = (TextView) view.findViewById(R.id.title_text);
         titleText.setText("任务");
 
+    }
+
+    @OnClick({R.id.text1})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.text1:
+                Intent intent = new Intent(getActivity(), AActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 }

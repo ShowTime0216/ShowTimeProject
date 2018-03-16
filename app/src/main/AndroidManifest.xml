@@ -25,7 +25,7 @@
     <application
         android:name=".base.BaseApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
@@ -64,7 +64,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
+                android:resource="@xml/provider_paths" />
         </provider>
 
         <activity
@@ -80,7 +80,7 @@
         <activity
             android:name=".activity.ProjectActivity"
             android:screenOrientation="portrait" />
-        <activity android:name="mabeijianxi.camera.MediaRecorderActivity"/>
+        <activity android:name="mabeijianxi.camera.MediaRecorderActivity" />
         <activity
             android:name=".activity.ExampleActivity"
             android:screenOrientation="portrait" />
@@ -95,13 +95,23 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.RecordActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|stateUnchanged|adjustPan" />
         <activity
             android:name=".activity.ViewScrollActivity"
             android:screenOrientation="landscape" />
         <activity
             android:name=".activity.AActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.DActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

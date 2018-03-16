@@ -8,9 +8,11 @@ import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,7 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,13 +32,13 @@ import com.showtime.lp.base.BaseActivity;
 import com.showtime.lp.database.DataBaseHelper;
 import com.showtime.lp.model.NumberCodeBean;
 import com.showtime.lp.model.RecordDataBean;
+import com.showtime.lp.utils.DateUtils;
+import com.showtime.lp.utils.SoundPlayUtils;
 import com.showtime.lp.view.record.AudioRecordButton;
 import com.showtime.lp.view.record.MediaManager;
 
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -71,6 +74,10 @@ public class RecordActivity extends BaseActivity {
     TextView titleTime;
     @BindView(R.id.right_text)
     TextView rightTextView;
+    @BindView(R.id.btn_layout)
+    RelativeLayout btnLayout;
+    @BindView(R.id.bottom_layout)
+    LinearLayout bottomLayout;
     private RecordExampleAdapter recordExampleAdapter;
     private List<RecordDataBean> list = new ArrayList<>();
     private View play_view;
@@ -85,6 +92,7 @@ public class RecordActivity extends BaseActivity {
         setContentView(R.layout.activity_record);
         ButterKnife.bind(this);
         context = RecordActivity.this;
+        SoundPlayUtils.init(context);
         idType = "id_1234"; // 根据比赛id和场地id来建表，确保唯一性
         initView();
     }
@@ -109,18 +117,6 @@ public class RecordActivity extends BaseActivity {
                     "(_id INTEGER PRIMARY KEY AUTOINCREMENT, id INTEGER, time TEXT," +
                     " recordUrl TEXT, number TEXT, numScore TEXT, score TEXT, duration TEXT, isRead TEXT)");
         }
-        recordLayout.setOnClickListener(new View.OnClickListener() { // 点击补点
-            @Override
-            public void onClick(View v) {
-                if (!TextUtils.isEmpty(recordText.getText().toString()) && recordText.getText().toString().equals("开始评分")) {
-                    leftText.setVisibility(View.VISIBLE);
-                    recordText.setText("长按语音打点");
-                    Toast.makeText(context, "开始评分", Toast.LENGTH_SHORT).show();
-                } else {
-                    addData("", "0''", "", "");
-                }
-            }
-        });
         recordLayout.setAudioFinishRecorderListener(new AudioRecordButton.AudioFinishRecorderListener() { // 长按录音
             @Override
             public void onFinished(float seconds, String filePath) {
@@ -130,6 +126,21 @@ public class RecordActivity extends BaseActivity {
                     double d = Double.parseDouble(String.valueOf(seconds));
                     String str = (double) Math.round(d * 10) / 10.0 + "''";
                     addData(filePath, str, "", "");
+                    Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        recordLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!TextUtils.isEmpty(recordText.getText().toString()) && recordText.getText().toString().equals("开始评分")) {
+                    leftText.setVisibility(View.VISIBLE);
+                    rightText.setClickable(false);
+                    recordText.setText("长按语音打点");
+                    Toast.makeText(context, "开始评分", Toast.LENGTH_SHORT).show();
+                } else {
+                    addData("", "0''", "", "");
                 }
             }
         });
@@ -138,10 +149,11 @@ public class RecordActivity extends BaseActivity {
     @OnClick({R.id.record_layout, R.id.left_text, R.id.right_btn, R.id.right_layout})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.record_layout:
+            case R.id.record_layout: // 评分按钮
                 break;
             case R.id.left_text: // 开始结束
                 leftText.setVisibility(View.GONE);
+                rightText.setClickable(true);
                 recordText.setText("继续");
                 break;
             case R.id.right_btn: // 补点
@@ -177,8 +189,9 @@ public class RecordActivity extends BaseActivity {
 //            setTime = format.format(new Date());
 //        }
         count++;
-        SimpleDateFormat sDateFormat = new SimpleDateFormat("hh:mm:ss");
-        String date = sDateFormat.format(new Date());
+//        SimpleDateFormat sDateFormat = new SimpleDateFormat("hh:mm:ss");
+//        String date = sDateFormat.format(new Date());
+        String date = String.valueOf(System.currentTimeMillis());
         ContentValues cv = new ContentValues();
         cv.put("id", count);
         if (!TextUtils.isEmpty(time)) {
@@ -266,6 +279,8 @@ public class RecordActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
+                btnLayout.setVisibility(View.GONE);
+                bottomLayout.setVisibility(View.GONE);
             }
         });
         cancel_text.setOnClickListener(new View.OnClickListener() {
@@ -306,7 +321,8 @@ public class RecordActivity extends BaseActivity {
                     dialog.dismiss();
                     String time = timeType(hour_et.getText().toString().trim()) + ":" + timeType(minute_et.getText().toString().trim()) + ":"
                             + timeType(second_et.getText().toString().trim());
-                    addData("", "0''", time, code_et.getText().toString().trim());
+                    String str = String.valueOf(Long.parseLong(DateUtils.getStrToTime(time)) * 1000);
+                    addData("", "0''", str, code_et.getText().toString().trim());
                 } else {
                     Toast.makeText(context, "请输入完整数据", Toast.LENGTH_SHORT).show();
                 }
@@ -493,7 +509,7 @@ public class RecordActivity extends BaseActivity {
                 viewHolder.time_text = (TextView) convertView.findViewById(R.id.time_text);
                 viewHolder.play_layout = (LinearLayout) convertView.findViewById(R.id.play_layout);
 //                viewHolder.play_view = (View) convertView.findViewById(R.id.play_view);
-                viewHolder.code_text = (TextView) convertView.findViewById(R.id.code_text);
+                viewHolder.code_text = (EditText) convertView.findViewById(R.id.code_text);
                 viewHolder.score_text = (TextView) convertView.findViewById(R.id.score_text);
                 viewHolder.duration_text = (TextView) convertView.findViewById(R.id.duration_text);
                 viewHolder.read_text = (TextView) convertView.findViewById(R.id.read_text);
@@ -541,12 +557,42 @@ public class RecordActivity extends BaseActivity {
                     notifyDataSetChanged();
                 }
             });
-            viewHolder.code_text.setOnClickListener(new View.OnClickListener() { // 输入编号
+
+            viewHolder.code_text.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
-                public void onClick(View v) {
-                    codeDialog(mContext, viewHolder.code_text.getText().toString().trim(), bean);
+                public void onFocusChange(View v, boolean hasFocus) {
+                    viewHolder.code_text.addTextChangedListener(new TextWatcher() {
+                        @Override
+                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                            Log.e("before------", "beforeTextChanged");
+                        }
+
+                        @Override
+                        public void onTextChanged(CharSequence s, int start, int before, int count) {
+                            Log.e("on------", "onTextChanged");
+                        }
+
+                        @Override
+                        public void afterTextChanged(Editable s) {
+                            Log.e("after------", "afterTextChanged");
+                            String str = s.toString().trim();
+                            if (!TextUtils.isEmpty(str) && str.length() == 2) {
+                                viewHolder.code_text.clearFocus();
+                            } else {
+
+                            }
+                        }
+                    });
                 }
             });
+
+
+//            viewHolder.code_text.setOnClickListener(new View.OnClickListener() { // 输入编号
+//                @Override
+//                public void onClick(View v) {
+//                    codeDialog(mContext, viewHolder.code_text.getText().toString().trim(), bean);
+//                }
+//            });
             return convertView;
         }
 
@@ -554,7 +600,7 @@ public class RecordActivity extends BaseActivity {
             TextView time_text;
             LinearLayout play_layout;
             // View play_view;
-            TextView code_text;
+            EditText code_text;
             TextView score_text;
             TextView duration_text;
             TextView read_text;
@@ -627,6 +673,5 @@ public class RecordActivity extends BaseActivity {
         }
 
     }
-
 
 }

@@ -44,20 +44,15 @@ public class ExampleRightFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (view == null) {
-            view = inflater.inflate(R.layout.frag_example_right, container, false);
-            initView();
-        }
-        ViewGroup parent = (ViewGroup) view.getParent();
-        if (parent != null) {
-            parent.removeView(view);
-        }
-
-
-        initView();
-
+        view = inflater.inflate(R.layout.frag_example_right, container, false);
         ButterKnife.bind(this, view);
+        initView();
         return view;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     private void initView() {
@@ -69,8 +64,6 @@ public class ExampleRightFragment extends BaseFragment {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
             Log.e("right--onResume-----", "   --------------");
-        } else {
-            Log.e("right--onPause------", "   --------------");
         }
     }
 
@@ -91,22 +84,22 @@ public class ExampleRightFragment extends BaseFragment {
                 break;
             case R.id.toast3:
                 Log.e("333---------", voicePermission() + "");
-                    MediaRecorder recorder = new MediaRecorder();
-                    recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-                    recorder.setOutputFormat(MediaRecorder.OutputFormat.AAC_ADTS);
-                    recorder.setAudioChannels(1);
-                    recorder.setAudioSamplingRate(8000);
-                    recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
-                    File file = new File(Constants.PATH_PROJECT, "asd.amr");
-                    recorder.setOutputFile(file.getAbsolutePath());
-                    try {
-                        recorder.prepare();
-                        recorder.start();
-                        recorder.stop();
-                        recorder.release();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                MediaRecorder recorder = new MediaRecorder();
+                recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+                recorder.setOutputFormat(MediaRecorder.OutputFormat.AAC_ADTS);
+                recorder.setAudioChannels(1);
+                recorder.setAudioSamplingRate(8000);
+                recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
+                File file = new File(Constants.PATH_PROJECT, "asd.amr");
+                recorder.setOutputFile(file.getAbsolutePath());
+                try {
+                    recorder.prepare();
+                    recorder.start();
+                    recorder.stop();
+                    recorder.release();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.toast4:
                 break;
