@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="com.github.lecho:hellocharts-android-v1.5.8">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/hellocharts-android-v1.5.8.aar/bae5336d3c833f3af8e5457c3823f743/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/hellocharts-android-v1.5.8.aar/bae5336d3c833f3af8e5457c3823f743/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

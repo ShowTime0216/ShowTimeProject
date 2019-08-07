@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="com.tencent.bugly:crashreport_upgrade-1.4.1">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/crashreport_upgrade-1.4.1.aar/782332ded450c08437f143de3a9e9bcb/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/crashreport_upgrade-1.4.1.aar/782332ded450c08437f143de3a9e9bcb/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.tencent.bugly/crashreport_upgrade/1.4.1/e0fa51a14aef1ab9764f6a5be75327a80c2a2284/crashreport_upgrade-1.4.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

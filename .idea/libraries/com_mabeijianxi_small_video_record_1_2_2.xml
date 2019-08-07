@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="com.mabeijianxi:small-video-record-1.2.2">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/small-video-record-1.2.2.aar/d771ebab8d112928fe2ba19091ede02e/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/small-video-record-1.2.2.aar/d771ebab8d112928fe2ba19091ede02e/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mabeijianxi/small-video-record/1.2.2/ee1915eb62645d6cf814e95035ed0f86d1820935/small-video-record-1.2.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
